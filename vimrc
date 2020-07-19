@@ -1,12 +1,6 @@
 " Set compatability to Vim only.
 set nocompatible
 
-" Enable True Color Support for Alacritty
-set termguicolors
-
-" Enable syntax highlighting
-syntax on
-
 " Enable line numbering
 set number
 
@@ -48,23 +42,26 @@ call vundle#begin()
 
 " Plugin List
 Plugin 'VundleVim/Vundle.vim' " Required Vundle Plugin
-Plugin 'morhetz/gruvbox' " Gruvbox Vim Color Theme
 Plugin 'tpope/vim-fugitive' " Git Plugin for Vim
 Plugin 'valloric/youcompleteme' " AutoComplete
 Plugin 'christoomey/vim-tmux-navigator' " Tmux Window Navigation
 Plugin 'scrooloose/nerdtree' " Tree-Style File Browser
 Plugin 'raimondi/delimitmate' " Paired brackets
 Plugin 'Yggdroot/indentLine' " Vertical allignment displayed with thin lines
+Plugin 'joshdick/onedark.vim' " One Dark color theme
 
 call vundle#end()
 filetype plugin indent on
 "End Vundle Plugin Manager
 
-" Set gruvbox color schemei
-" See https://github.com/morhetz/gruvbox for theme installation details
-let g:gruvbox_italic=1
-autocmd vimenter * colorscheme gruvbox
-set background=dark
+" Enable True Color Support for Alacritty
+set termguicolors
+
+" Enable syntax highlighting
+syntax on
+
+" Enable color scheme
+colorscheme onedark
 
 " Key Binds
 silent! nmap <C-p> :NERDTreeToggle<CR>

@@ -24,6 +24,9 @@ export PATH=$PATH:$HOME/go/bin
 # Add pip installation directory to path
 export PATH=$PATH:$HOME/.local/bin
 
+# Add cargo binaries to path
+export PATH=$PATH:$HOME/.cargo/bin
+
 # Start tmux session on launch
 if [ "$TMUX" = "" ]; then tmux; fi
 
