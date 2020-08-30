@@ -48,7 +48,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Tmux Window Navigation
 Plugin 'scrooloose/nerdtree' " Tree-Style File Browser
 Plugin 'raimondi/delimitmate' " Paired brackets
 Plugin 'Yggdroot/indentLine' " Vertical allignment displayed with thin lines
-Plugin 'joshdick/onedark.vim' " One Dark color theme
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -61,7 +61,7 @@ set termguicolors
 syntax on
 
 " Enable color scheme
-colorscheme onedark
+colorscheme base16-default-dark
 
 " Key Binds
 silent! nmap <C-p> :NERDTreeToggle<CR>

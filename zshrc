@@ -32,3 +32,9 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+
+complete -o nospace -C /usr/local/bin/vault vault
+
+# Set vault address
+export VAULT_ADDR="https://vault.fitztech.io:8200"
+
