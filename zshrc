@@ -38,3 +38,16 @@ complete -o nospace -C /usr/local/bin/vault vault
 # Set vault address
 export VAULT_ADDR="https://vault.fitztech.io:8200"
 
+# Login to vault with common parameters and export token for use in automation tools
+function vault-login(){
+    vault login -method=userpass username=kevin
+    export VAULT_TOKEN=$(cat ~/.vault-token)
+}
+
+# Easy SSH with short-lived vault SSH certs
+function vault-ssh(){ 
+    rm ~/.ssh/ops-cert.pub
+    vault write -field=signed_key ssh-client/sign/ops public_key=@$HOME/.ssh/ops.pub >> ~/.ssh/ops-cert.pub
+    ssh -i ~/.ssh/ops ops@$1
+}
+
