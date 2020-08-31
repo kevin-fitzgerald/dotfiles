@@ -48,6 +48,8 @@ function vault-login(){
 function vault-ssh(){ 
     rm ~/.ssh/ops-cert.pub
     vault write -field=signed_key ssh-client/sign/ops public_key=@$HOME/.ssh/ops.pub >> ~/.ssh/ops-cert.pub
-    ssh -i ~/.ssh/ops ops@$1
+    if [[ $1 != "renew" ]]; then
+        ssh -i ~/.ssh/ops ops@$1
+    fi    
 }
 
