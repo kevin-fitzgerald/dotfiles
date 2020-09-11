@@ -40,7 +40,7 @@ export VAULT_ADDR="https://vault.fitztech.io:8200"
 
 # Login to vault with common parameters and export token for use in automation tools
 function vault-login(){
-    vault login -method=userpass username=kevin
+    vault login -method=ldap username=kevin
     export VAULT_TOKEN=$(cat ~/.vault-token)
 }
 
