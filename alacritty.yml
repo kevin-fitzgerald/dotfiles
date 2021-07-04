@@ -1,48 +1,45 @@
 # Font Settings
 font:
     # See https://github.com/powerline/fonts for font installation details
+    size: 11.5
     normal:
-        family: Fira Code
+        family: JetBrainsMonoMedium Nerd Font
     bold:
-        family: Fira Code
+        family: JetBrainsMonoMedium Nerd Font
         style: Bold
 
 # Color Settings
 draw_bold_text_with_bright_colors: true
 
-# Colors (Base16 Default Dark)
+# Colors (Pop!_OS)
 colors:
   # Default colors
   primary:
-    background: '0x181818'
-    foreground: '0xd8d8d8'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0xd8d8d8'
-    cursor: '0xd8d8d8'
+    background: '#333333'
+    foreground: '#F2F2F2'
 
   # Normal colors
   normal:
-    black:   '0x181818'
-    red:     '0xab4642'
-    green:   '0xa1b56c'
-    yellow:  '0xf7ca88'
-    blue:    '0x7cafc2'
-    magenta: '0xba8baf'
-    cyan:    '0x86c1b9'
-    white:   '0xd8d8d8'
+    black:   '#333333'
+    red:     '#CC0000'
+    green:   '#4E9A06'
+    yellow:  '#C4A000'
+    blue:    '#3465A4'
+    magenta: '#75507B'
+    cyan:    '#06989A'
+    white:   '#D3D7CF'
 
   # Bright colors
   bright:
-    black:   '0x585858'
-    red:     '0xab4642'
-    green:   '0xa1b56c'
-    yellow:  '0xf7ca88'
-    blue:    '0x7cafc2'
-    magenta: '0xba8baf'
-    cyan:    '0x86c1b9'
-    white:   '0xf8f8f8'
+    black:   '#88807C'
+    red:     '#F15D22'
+    green:   '#73C48F'
+    yellow:  '#FFCE51'
+    blue:    '#48B9C7'
+    magenta: '#AD7FA8'
+    cyan:    '#34E2E2'
+    white:   '#EEEEEC'
+
 
 # Window Settings
 window:
