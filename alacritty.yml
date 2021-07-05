@@ -1,7 +1,7 @@
 # Font Settings
 font:
     # See https://github.com/powerline/fonts for font installation details
-    size: 11.5
+    size: 10
     normal:
         family: JetBrainsMonoMedium Nerd Font
     bold:

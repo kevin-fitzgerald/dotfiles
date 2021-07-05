@@ -1,4 +1,4 @@
-" Set compatability to Vim only.
+"Set compatability to Vim only.
 set nocompatible
 
 " Enable line numbering
@@ -37,7 +37,7 @@ set clipboard=unnamedplus
 " Start Vundle Plugin Manager
 " See https://github.com/VundleVim/Vundle.vim for Vundle installation details
 filetype off
-set rtp+=$HOME/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugin List
@@ -48,7 +48,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Tmux Window Navigation
 Plugin 'scrooloose/nerdtree' " Tree-Style File Browser
 Plugin 'raimondi/delimitmate' " Paired brackets
 Plugin 'Yggdroot/indentLine' " Vertical allignment displayed with thin lines
-Plugin 'chriskempson/base16-vim'
+Plugin 'tomasiser/vim-code-dark' " Color scheme
 
 call vundle#end()
 filetype plugin indent on
@@ -61,7 +61,13 @@ set termguicolors
 syntax on
 
 " Enable color scheme
-colorscheme base16-default-dark
+colorscheme codedark
+
+" Enable powerline
+set laststatus=2
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 " Key Binds
 silent! nmap <C-p> :NERDTreeToggle<CR>
