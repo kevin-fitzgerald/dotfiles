@@ -32,4 +32,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 ```
-6. Powerline Fonts (I use JetBrainsMono Medium Nerd Font from Nerd Fonts)
+6. Powerline Fonts (I use JetBrainsMono Medium Nerd Font from [Nerd Fonts](https://www.nerdfonts.com/))
