@@ -37,7 +37,7 @@ set clipboard=unnamedplus
 " Start Vundle Plugin Manager
 " See https://github.com/VundleVim/Vundle.vim for Vundle installation details
 filetype off
-set rtp+=$HOME/.config/nvim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugin List
