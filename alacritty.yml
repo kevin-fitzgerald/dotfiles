@@ -3,10 +3,11 @@ font:
     # See https://github.com/powerline/fonts for font installation details
     size: 10
     normal:
-        family: JetBrainsMonoMedium Nerd Font
+        family: FiraCode Nerd Font
     bold:
-        family: JetBrainsMonoMedium Nerd Font
-        style: Bold
+        family: FiraCode Nerd Font
+    italic:
+        family: FiraCode Nerd Font
 
 # Color Settings
 draw_bold_text_with_bright_colors: true
