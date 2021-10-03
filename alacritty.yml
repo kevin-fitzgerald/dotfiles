@@ -1,13 +1,13 @@
 # Font Settings
 font:
-    # See https://github.com/powerline/fonts for font installation details
-    size: 10
-    normal:
-        family: FiraCode Nerd Font
-    bold:
-        family: FiraCode Nerd Font
-    italic:
-        family: FiraCode Nerd Font
+  # See https://github.com/powerline/fonts for font installation details
+  size: 11.5
+  normal:
+    family: FiraMono Nerd Font
+  bold:
+    family: FiraMono Nerd Font
+  italic:
+    family: FiraMono Nerd Font
 
 # Color Settings
 draw_bold_text_with_bright_colors: true
@@ -44,16 +44,17 @@ colors:
 
 # Window Settings
 window:
-    # Padding around Terminal Sides
-    padding:
-        x: 7
-        y: 0
+  # Padding around Terminal Sides
+  padding:
+    x: 7
+    y: 0
 
 # Clipboard and Selection Settings
 selection:
-    # Selected text is copied to primary clipboard
-    save_to_clipboard: true
+  # Selected text is copied to primary clipboard
+  save_to_clipboard: true
 
 # Cursor Settings
 cursor:
-    style: Beam
+  style: Beam
+

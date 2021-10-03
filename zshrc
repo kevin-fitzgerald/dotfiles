@@ -31,3 +31,8 @@ bindkey '^[[A~'    up-line-or-beginning-search       # up         prev command i
 bindkey '^[[B~'    down-line-or-beginning-search     # down       next command in history
 bindkey '^[[5~'    history-beginning-search-backward #pgup        prev command in history
 bindkey '^[[6~'    history-beginning-search-forward  #pgdown      next command in history
+# GoLang
+export GOROOT=/home/kevin/.go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/home/kevin/go
+export PATH=$GOPATH/bin:$PATH
