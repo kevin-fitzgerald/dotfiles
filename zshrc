@@ -6,10 +6,8 @@ export PATH=$CUSTOM_PATH:$DEFAULT_PATH
 # load starhip prompt
 eval "$(starship init zsh)"
 
-# set vault environment
+# configure additional environment variables
 export VAULT_ADDR=https://vault.local.fitztech.io:8200
-alias vlog="vault login -method=oidc -path=AzureAD"
-alias vcert="vault write -field=signed_key ssh-client-signer/sign/admin public_key=@$HOME/.ssh/id_ed25519.pub ttl=12h > $HOME/.ssh/id_ed25519-cert.pub"
 
 # remap home and end keys for wsl2
 bindkey '^?'       backward-delete-char              # bs         delete one char backward

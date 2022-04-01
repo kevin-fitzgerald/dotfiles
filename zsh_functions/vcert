@@ -1,0 +1,14 @@
+# Generate a Vault SSH Certificate
+echo "## Submitting $HOME/.ssh/id_ed25519.pub to Vault for signing."
+vault write -field=signed_key ssh-client-signer/sign/admin public_key=@$HOME/.ssh/id_ed25519.pub ttl=12h > $HOME/.ssh/id_ed25519-cert.pub
+if [ $? -eq 0 ]; then
+  echo "## Received the following certificate from Vault."
+  ssh-keygen -L -f $HOME/.ssh/id_ed25519-cert.pub
+  echo "## Removing other SSH keys from ssh-agent."
+  ssh-add -D
+  echo "## Adding $HOME/.ssh/id_ed25519 to ssh-agent."
+  ssh-add $HOME/.ssh/id_ed25519
+  echo "## Cert added to ssh-agent, you're ready to rock and roll."
+else
+  echo "## Failed to retrieve certificate from Vault.  Review the error above for details."
+fi

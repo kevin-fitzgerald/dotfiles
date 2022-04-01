@@ -1,0 +1,2 @@
+# Login to vault and set vault token variable
+export VAULT_TOKEN=$(vault login -method=oidc -path=AzureAD -field=token)
