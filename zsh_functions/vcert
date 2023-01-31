@@ -1,14 +1,30 @@
-# Generate a Vault SSH Certificate
-echo "## Submitting $HOME/.ssh/id_ed25519.pub to Vault for signing."
-vault write -field=signed_key ssh-client-signer/sign/admin public_key=@$HOME/.ssh/id_ed25519.pub ttl=12h > $HOME/.ssh/id_ed25519-cert.pub
+# This script expects you to already have a valid ssh-agent instance running
+
+# Script configuration
+SSH_KEY_PATH="$HOME/.ssh/vault-ssh"
+SSH_CERT_VALIDITY="4h"
+VAULT_SSH_SIGNER="ssh-client-signer"
+VAULT_SSH_SIGNER_ROLE="systems"
+
+# Ensure local SSH keypair is configured
+echo "## Checking for existing SSH key at $SSH_KEY_PATH"
+if test -f "$SSH_KEY_PATH"; then
+  echo "## Key found. Removing pre-existing vault SSH entries from ssh-agent."
+  ssh-add -d "$SSH_KEY_PATH" 2>/dev/null
+else
+  echo "## Key not found. Performing one-time creation of SSH key."
+  ssh-keygen -t ed25519 -C "Vault SSH Certificate Key Pair" -f $SSH_KEY_PATH
+fi
+
+# Submit key to Vault for signing and store result in ssh-agent
+echo "## Submitting $SSH_KEY_PATH to Vault for signing."
+vault write -field=signed_key "$VAULT_SSH_SIGNER/sign/$VAULT_SSH_SIGNER_ROLE" public_key="@$SSH_KEY_PATH.pub" ttl="$SSH_CERT_VALIDITY" > "$SSH_KEY_PATH-cert.pub"
 if [ $? -eq 0 ]; then
   echo "## Received the following certificate from Vault."
-  ssh-keygen -L -f $HOME/.ssh/id_ed25519-cert.pub
-  echo "## Removing other SSH keys from ssh-agent."
-  ssh-add -D
+  ssh-keygen -L -f "$SSH_KEY_PATH-cert.pub"
   echo "## Adding $HOME/.ssh/id_ed25519 to ssh-agent."
-  ssh-add $HOME/.ssh/id_ed25519
+  ssh-add "$SSH_KEY_PATH"
   echo "## Cert added to ssh-agent, you're ready to rock and roll."
 else
-  echo "## Failed to retrieve certificate from Vault.  Review the error above for details."
+  echo "## Failed to retrieve certificate from Vault. Review the error above for details."
 fi

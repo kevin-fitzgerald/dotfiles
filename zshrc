@@ -7,7 +7,7 @@ export PATH=$CUSTOM_PATH:$DEFAULT_PATH
 eval "$(starship init zsh)"
 
 # configure additional environment variables
-export VAULT_ADDR=https://vault.local.fitztech.io:8200
+export VAULT_ADDR=https://vault.nglep.com:8200
 
 # remap home and end keys for wsl2
 bindkey '^?'       backward-delete-char              # bs         delete one char backward

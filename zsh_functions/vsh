@@ -1,9 +1,8 @@
 # Vault Signing Configuration
 VAULT_SSH_SIGNER="ssh-client-signer"
-VAULT_SSH_ROLE="admin"
+VAULT_SSH_ROLE="systems"
 VAULT_SSH_CERT_TEMP_PATH="$HOME/.ssh/vault-temp-ssh-cert"
-VAULT_SSH_USER="root"
-VAULT_SSH_DOMAIN="local.fitztech.io"
+VAULT_SSH_USER="ngladmin"
 
 # Generate a temporary SSH keypair
 echo y | ssh-keygen -N '' -q -f "$VAULT_SSH_CERT_TEMP_PATH" -C "vault-temp-ssh-cert" > /dev/null
@@ -22,4 +21,4 @@ fi
 ((sleep 5; rm $VAULT_SSH_CERT_TEMP_PATH* > /dev/null)&) 
 
 # Connect to target
-ssh -i "$VAULT_SSH_CERT_TEMP_PATH" -i "$VAULT_SSH_CERT_TEMP_PATH-cert.pub" "${VAULT_SSH_USER}@${1}.${VAULT_SSH_DOMAIN}"
+ssh -i "$VAULT_SSH_CERT_TEMP_PATH" -i "$VAULT_SSH_CERT_TEMP_PATH-cert.pub" "${VAULT_SSH_USER}@${1}"
