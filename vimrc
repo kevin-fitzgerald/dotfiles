@@ -1,4 +1,4 @@
-"Set compatability to Vim only.
+" Set compatability to Vim only.
 set nocompatible
 
 " Enable line numbering
@@ -34,52 +34,6 @@ set ttyfast
 " Set vim to use linux system clipboard register
 set clipboard=unnamedplus
 
-" Start Vundle Plugin Manager
-" See https://github.com/VundleVim/Vundle.vim for Vundle installation details
-filetype off
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Plugin List
-Plugin 'VundleVim/Vundle.vim' " Required Vundle Plugin
-Plugin 'tpope/vim-fugitive' " Git Plugin for Vim
-Plugin 'christoomey/vim-tmux-navigator' " Tmux Window Navigation
-Plugin 'scrooloose/nerdtree' " Tree-Style File Browser
-Plugin 'raimondi/delimitmate' " Paired brackets
-Plugin 'Yggdroot/indentLine' " Vertical allignment displayed with thin lines
-Plugin 'tomasiser/vim-code-dark' " Color scheme
-
-call vundle#end()
-filetype plugin indent on
-"End Vundle Plugin Manager
-
-" Enable True Color Support for Alacritty
-set termguicolors
-
 " Enable syntax highlighting
 syntax on
 
-" Enable color scheme
-colorscheme codedark
-
-" Enable powerline
-set laststatus=2
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
-" Key Binds
-silent! nmap <C-p> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
-
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
-
-" NerdTree autolaunch config
-autocmd StdinReadPre * let s:std_in=1
-" Open NerdTree if no file is specified
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Open NerdTree if a dir is specified
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" Close vim if only NerdTree is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
