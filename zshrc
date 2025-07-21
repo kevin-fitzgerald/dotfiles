@@ -1,61 +1,152 @@
-# update path - hardcoded default path for ubuntu derivates, avoid tmux path spam
-CUSTOM_PATH=$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin
-DEFAULT_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-export PATH=$CUSTOM_PATH:$DEFAULT_PATH
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# load starhip prompt
-eval "$(starship init zsh)"
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-# configure additional environment variables
-export VAULT_ADDR=https://vault.nglep.com:8200
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# remap home and end keys for wsl2
-bindkey '^?'       backward-delete-char              # bs         delete one char backward
-bindkey '^[[3~'    delete-char                       # delete     delete one char forward
-bindkey '^[[1~'    beginning-of-line                 # home       go to the beginning of line
-bindkey '^[[4~'    end-of-line                       # end        go to the end of line
-bindkey '^[[1;5C'  forward-word                      # ctrl+right go forward one word
-bindkey '^[[1;5D'  backward-word                     # ctrl+left  go backward one word
-bindkey '^H'       backward-kill-word                # ctrl+bs    delete previous word
-bindkey '^[[3;5~'  kill-word                         # ctrl+del   delete next word
-bindkey '^J'       backward-kill-line                # ctrl+j     delete everything before cursor
-bindkey '^[[D~'    backward-char                     # left       move cursor one char backward
-bindkey '^[[C~'    forward-char                      # right      move cursor one char forward
-bindkey '^[[A~'    up-line-or-beginning-search       # up         prev command in history
-bindkey '^[[B~'    down-line-or-beginning-search     # down       next command in history
-bindkey '^[[5~'    history-beginning-search-backward #pgup        prev command in history
-bindkey '^[[6~'    history-beginning-search-forward  #pgdown      next command in history
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# load custom zsh functions
-fpath=( $HOME/.zsh_functions "${fpath[@]}" )
-for filename in $HOME/.zsh_functions/*
-do
-  autoload -Uz $(basename ${filename})
-done
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# load ssh agent on shell start
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    fast-syntax-highlighting
+    # zsh-autocomplete
+    tmux
+)
+
+# Launch tmux automatically
+ZSH_TMUX_AUTOSTART=true
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Load ssh-agent
 GOT_AGENT=0
 
-for FILE in $(find /tmp/ssh-* -type s -user ${LOGNAME} -name "agent.[0-9]*" 2>/dev/null)
+## Load existing agent if found
+for FILE in $(find /tmp -maxdepth 1 -name "ssh-*" -type d -exec find {} -type s -user ${LOGNAME} -name "agent.[0-9]*" \; 2>/dev/null)
 do
-  SOCK_PID=${FILE##*.}
+    SOCK_PID=${FILE##*.}
 
-  PID=$(ps -fu${LOGNAME}|awk '/ssh-agent/ && ( $2=='${SOCK_PID}' || $3=='${SOCK_PID}' || $2=='${SOCK_PID}' +1 ) {print $2}')
+    PID=$(ps -fu${LOGNAME}|awk '/ssh-agent/ && ( $2=='${SOCK_PID}' || $3=='${SOCK_PID}' || $2=='${SOCK_PID}' +1 ) {print $2}')
 
-  SOCK_FILE=${FILE}
+    SOCK_FILE=${FILE}
 
-  SSH_AUTH_SOCK=${SOCK_FILE}; export SSH_AUTH_SOCK;
-  SSH_AGENT_PID=${PID}; export SSH_AGENT_PID;
+    SSH_AUTH_SOCK=${SOCK_FILE}; export SSH_AUTH_SOCK;
+    SSH_AGENT_PID=${PID}; export SSH_AGENT_PID;
 
-  ssh-add -l > /dev/null 2>&1
-  if [ $? != 2 ]
-  then
-    GOT_AGENT=1
-    break
-  fi
+    ssh-add -l > /dev/null 2>&1
+    if [ $? != 2 ]
+    then
+        GOT_AGENT=1
+        break
+    fi
 done
 
+## Create new agent if none is found
 if [ $GOT_AGENT = 0 ]
 then
-  eval `ssh-agent` > /dev/null
+    eval `ssh-agent` > /dev/null
+
+    ### Optionally load all keys on creation
+    find ~/.ssh -type f ! -name "*.pub" ! -name "known_hosts" ! -name "config" ! -name "authorized_keys" -exec ssh-add {} \; &>/dev/null
 fi
+
+# Set custom environment variables
+export EDITOR="/usr/bin/vim"
+
+# Load starship prompt
+eval "$(starship init zsh)"
