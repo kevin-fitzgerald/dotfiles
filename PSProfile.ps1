@@ -1,6 +1,3 @@
-# Load Starship Prompt
-Invoke-Expression (&starship init powershell)
-
 # Get default host IP
 function Get-HostIp {
     [CmdletBinding()]
@@ -16,8 +13,8 @@ function Get-HostIp {
         $AddressFamily = 'IPv4'
     )
 
-    $defaultRouteNics = Get-NetRoute -DestinationPrefix 0.0.0.0/0 | 
-                            Sort-Object -Property RouteMetric | 
+    $defaultRouteNics = Get-NetRoute -DestinationPrefix 0.0.0.0/0 |
+                            Sort-Object -Property RouteMetric |
                             Select-Object -ExpandProperty ifIndex
 
     if ($defaultRouteNics.length -eq 0) {
@@ -59,7 +56,7 @@ function Remove-WSLPortForward {
         [string]
         $Port
     )
-    
+
     netsh interface portproxy delete v4tov4 listenport=$Port
 }
 
@@ -81,15 +78,15 @@ function Enable-PackerPortForwarding {
     param (
         [Parameter()]
         [int]
-        $MinimumPort = 8080,
+        $MinimumPort = 8800,
 
         [Parameter()]
         [int]
-        $MaximumPort = 8100,
+        $MaximumPort = 8810,
 
         [Parameter()]
         [string]
-        $ProvisioningCidr = "10.0.31.0/24"
+        $ProvisioningCidr = "0.0.0.0/0"
     )
 
     $MinimumPort..$MaximumPort | ForEach-Object {
@@ -115,11 +112,11 @@ function Disable-PackerPortForwarding {
     param (
         [Parameter()]
         [int]
-        $MinimumPort = 8080,
+        $MinimumPort = 8800,
 
         [Parameter()]
         [int]
-        $MaximumPort = 8100
+        $MaximumPort = 8810
     )
 
     $MinimumPort..$MaximumPort | ForEach-Object {
@@ -128,3 +125,6 @@ function Disable-PackerPortForwarding {
 
     Remove-NetFirewallRule -Name "Allow Packer Provisioning"
 }
+
+# Load Starship
+Invoke-Expression (&starship init powershell)
