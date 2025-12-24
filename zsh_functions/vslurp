@@ -1,2 +1,0 @@
-# Reading an existing token into VAULT_TOKEN environment variable
-export VAULT_TOKEN=$(cat $HOME/.vault-token)
