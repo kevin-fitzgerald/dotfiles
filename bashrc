@@ -36,5 +36,6 @@ fi
 # Set custom environment variables
 export EDITOR="/usr/bin/vim"
 
-# Load starship prompt
-eval "$(starship init bash)"
+# Load oh-my-posh
+PATH=$PATH:/home/kevin/.local/bin
+eval "$(oh-my-posh init bash --config spaceship)"
